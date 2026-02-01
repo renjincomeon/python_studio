@@ -1,0 +1,38 @@
+Experiment: renjin_20260107_qpcr  Selected Filter: SYBR Green I / HRM Dye (465-510)
+Include	Color	Pos	Name	Cp	Concentration	Standard	Status
+True	255	B2	Sample 14	19.40		0	
+True	255	B3	Sample 15	19.43		0	
+True	255	B4	Sample 16	19.27		0	
+True	255	B5	Sample 17	35.00		0	> - Late Cp call (last five cycles) has higher uncertainty
+True	255	B6	Sample 18	33.47		0	
+True	255	B7	Sample 19	33.31		0	
+True	65280	B8	Sample 20			0	
+True	255	B9	Sample 21	14.47		0	
+True	255	B10	Sample 22	14.26		0	
+True	255	C2	Sample 26	18.88		0	
+True	255	C3	Sample 27	19.08		0	
+True	255	C4	Sample 28	19.01		0	
+True	255	C5	Sample 29	32.86		0	
+True	255	C6	Sample 30	35.00		0	> - Late Cp call (last five cycles) has higher uncertainty
+True	255	C7	Sample 31	35.00		0	> - Late Cp call (last five cycles) has higher uncertainty
+True	255	C8	Sample 32	13.91		0	
+True	255	C9	Sample 33	13.70		0	
+True	255	C10	Sample 34	14.27		0	
+True	255	D2	Sample 38	18.88		0	
+True	255	D3	Sample 39	18.87		0	
+True	255	D4	Sample 40	18.96		0	
+True	255	D5	Sample 41	35.00		0	> - Late Cp call (last five cycles) has higher uncertainty
+True	255	D6	Sample 42	35.00		0	> - Late Cp call (last five cycles) has higher uncertainty
+True	255	D7	Sample 43	33.78		0	
+True	255	D8	Sample 44	13.65		0	
+True	255	D9	Sample 45	13.67		0	
+True	255	D10	Sample 46	13.28		0	
+True	255	E2	Sample 50	30.59		0	
+True	255	E3	Sample 51	31.04		0	
+True	255	E4	Sample 52	30.94		0	
+True	255	E5	Sample 53	33.26		0	
+True	255	E6	Sample 54	32.59		0	
+True	255	E7	Sample 55	34.25		0	
+True	255	E8	Sample 56	24.76		0	
+True	255	E9	Sample 57	25.19		0	
+True	255	E10	Sample 58	25.39		0	

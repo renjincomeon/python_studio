@@ -1,0 +1,6 @@
+STAR --runThreadN 4 \
+--runMode genomeGenerate \
+--genomeDir /home/renjin/ref/mouse/gencode/mm39_star_index_150 \
+--genomeFastaFiles /home/renjin/ref/mouse/gencode/GRCm39.genome.fa \
+--sjdbGTFfile /home/renjin/ref/mouse/gencode/gencode.vM38.chr_patch_hapl_scaff.annotation.gtf \
+--sjdbOverhang 149

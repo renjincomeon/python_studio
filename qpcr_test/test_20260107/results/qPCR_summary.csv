@@ -1,0 +1,9 @@
+﻿Sample,Gene,DeltaCt_Mean,DeltaCt_SEM,DeltaDeltaCt_Mean,DeltaDeltaCt_SEM,FoldChange_Mean,FoldChange_SEM,Replicates
+EV+F-Ctrl,K6,14.92,0.94,-0.0,0.94,1.37,0.56,3
+EV+F-Ctrl,CLDN4,-5.37,0.02,0.0,0.02,1.0,0.01,3
+F-Ctrl+K6,K6,14.46,0.43,-0.46,0.43,1.49,0.43,3
+F-Ctrl+K6,CLDN4,-5.8,0.1,-0.43,0.1,1.36,0.1,3
+F-M+K6,K6,14.65,0.83,-0.27,0.83,1.7,0.99,3
+F-M+K6,CLDN4,-5.72,0.04,-0.35,0.04,1.28,0.04,3
+F-MK185R+K6,K6,2.37,0.43,-12.55,0.43,6594.4,2068.42,3
+F-MK185R+K6,CLDN4,-5.65,0.15,-0.28,0.15,1.23,0.13,3
