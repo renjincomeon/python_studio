@@ -16,11 +16,13 @@ def run_zdock(receptor, ligand, outdir, config):
     subprocess.run(cmd, check=True)
 
 def run_pdb_mark_sur(pdb_file, config):
-    soft_path = config['software']['zdock']['home']
-    soft = os.path.join(soft_path, 'mark_sur')
     result_file = pdb_file.replace('.pdb', '_m.pdb')
     cmd = [
-        soft,
+        "docker", "run", "--rm",
+        "-v", f"$PWD:/zdock -w /zdock zdock302",
+        "-w", "/zdock",
+        "zdock302",
+        "./mark_sur",
         pdb_file,
         result_file
     ]
