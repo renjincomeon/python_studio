@@ -84,7 +84,7 @@ def run_zdock(receptor, ligand, outdir, config=None):
         "-v", f"{os.getcwd()}:{CONTAINER_WORKDIR}",
         "-w", CONTAINER_WORKDIR,
         DOCKER_IMAGE,
-        "zdock",               # 容器内执行的命令
+        "./zdock",               # 容器内执行的命令
         "-R", rel_receptor,
         "-L", rel_ligand,
         "-o", rel_output_file
