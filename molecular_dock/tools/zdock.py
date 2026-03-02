@@ -57,7 +57,7 @@ def run_pdb_mark_sur(pdb_file, config=None):
     print(f"[mark_sur] Running: {' '.join(cmd)}")
     
     try:
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd)
         print(f"[mark_sur] Success. Output: {abs_output}")
         return abs_output
     except subprocess.CalledProcessError as e:
@@ -93,7 +93,7 @@ def run_zdock(receptor, ligand, outdir, config=None):
     print(f"[ZDOCK] Running: {' '.join(cmd)}")
     
     try:
-        subprocess.run(cmd, check=True)
+        subprocess.run(cmd)
         print(f"[ZDOCK] Success. Output saved to {os.path.join(outdir, 'zdock.out')}")
     except subprocess.CalledProcessError as e:
         print(f"[ZDOCK] Failed with error code {e.returncode}")
