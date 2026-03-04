@@ -5,6 +5,7 @@ import argparse
 # 配置常量
 DOCKER_IMAGE = "zdock302"
 CONTAINER_WORKDIR = "/zdock"
+WORKDIR = "/workdir"
 
 def get_relative_to_cwd(file_path):
     """
@@ -47,9 +48,10 @@ def run_pdb_mark_sur(pdb_file, config=None):
     cmd = [
         "docker", "run", "--rm",
         "-v", f"{config['software']['zdock']['home']}:{CONTAINER_WORKDIR}",
-        "-w", CONTAINER_WORKDIR,
+        "-v", f"{dir_name}:{WORKDIR}",
+        "-w", WORKDIR,
         DOCKER_IMAGE,
-        "./mark_sur",          # 容器内执行的命令
+        f"{CONTAINER_WORKDIR}/mark_sur",          # 容器内执行的命令
         rel_input,             # 容器内输入路径 (相对路径)
         rel_output             # 容器内输出路径 (相对路径)
     ]
@@ -82,9 +84,10 @@ def run_zdock(receptor, ligand, outdir, config=None):
     cmd = [
         "docker", "run", "--rm",
         "-v", f"{config['software']['zdock']['home']}:{CONTAINER_WORKDIR}",
-        "-w", CONTAINER_WORKDIR,
+         "-v", f"{dir_name}:{WORKDIR}",
+        "-w", WORKDIR,
         DOCKER_IMAGE,
-        "./zdock",               # 容器内执行的命令
+        f"{CONTAINER_WORKDIR}/zdock",               # 容器内执行的命令
         "-R", rel_receptor,
         "-L", rel_ligand,
         "-o", rel_output_file
