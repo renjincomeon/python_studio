@@ -46,7 +46,7 @@ def run_pdb_mark_sur(pdb_file, config=None):
     # 格式: docker run --rm -v <cwd>:/zdock -w /zdock <image> <command> <args>
     cmd = [
         "docker", "run", "--rm",
-        "-v", f"{os.getcwd()}:{CONTAINER_WORKDIR}",
+        "-v", f"{config['software']['zdock']['home']}:{CONTAINER_WORKDIR}",
         "-w", CONTAINER_WORKDIR,
         DOCKER_IMAGE,
         "./mark_sur",          # 容器内执行的命令
@@ -81,7 +81,7 @@ def run_zdock(receptor, ligand, outdir, config=None):
     # 2. 构建 Docker 命令
     cmd = [
         "docker", "run", "--rm",
-        "-v", f"{os.getcwd()}:{CONTAINER_WORKDIR}",
+        "-v", f"{config['software']['zdock']['home']}:{CONTAINER_WORKDIR}",
         "-w", CONTAINER_WORKDIR,
         DOCKER_IMAGE,
         "./zdock",               # 容器内执行的命令
