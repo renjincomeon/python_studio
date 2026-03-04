@@ -26,40 +26,39 @@ def run_pdb_mark_sur(pdb_file, config=None):
     """
     在 Docker 中运行 mark_sur
     """
-    # 1. 准备路径
-    # 输入文件的相对路径 (容器内可见)
-    rel_input = get_relative_to_cwd(pdb_file)
-    
-    # 输出文件逻辑：同目录下，文件名加 _m.pdb
-    dir_name = os.path.dirname(rel_input)
-    base_name = os.path.basename(rel_input)
-    if base_name.endswith('.pdb'):
+
+    # 1️⃣ 宿主机绝对路径
+    abs_input = os.path.abspath(pdb_file)
+    input_dir = os.path.dirname(abs_input)
+    base_name = os.path.basename(abs_input)
+
+    # 2️⃣ 输出文件名
+    if base_name.endswith(".pdb"):
         out_name = base_name[:-4] + "_m.pdb"
     else:
         out_name = base_name + "_m.pdb"
-    
-    rel_output = os.path.join(dir_name, out_name)
-    
-    # 宿主机的完整输出路径 (用于返回给 Python)
-    abs_output = os.path.join(os.getcwd(), rel_output)
 
-    # 2. 构建 Docker 命令 (关键修复点)
-    # 格式: docker run --rm -v <cwd>:/zdock -w /zdock <image> <command> <args>
+    abs_output = os.path.join(input_dir, out_name)
+
+    # 3️⃣ 容器内部统一工作目录
+    container_workdir = "/work"
+
+    # 4️⃣ 构建 docker 命令
     cmd = [
         "docker", "run", "--rm",
-        "-v", f"{config['software']['zdock']['home']}:{CONTAINER_WORKDIR}",
-        "-v", f"{dir_name}:{WORKDIR}",
-        "-w", WORKDIR,
+        "-v", f"{config['software']['zdock']['home']}:/zdock",  # 软件目录
+        "-v", f"{input_dir}:{container_workdir}",               # 输入文件目录
+        "-w", container_workdir,
         DOCKER_IMAGE,
-        f"{CONTAINER_WORKDIR}/mark_sur",          # 容器内执行的命令
-        rel_input,             # 容器内输入路径 (相对路径)
-        rel_output             # 容器内输出路径 (相对路径)
+        "/zdock/mark_sur",   # 容器内可执行文件
+        base_name,           # 容器内输入文件
+        out_name             # 容器内输出文件
     ]
 
     print(f"[mark_sur] Running: {' '.join(cmd)}")
-    
+
     try:
-        subprocess.run(cmd)
+        subprocess.run(cmd, check=True)
         print(f"[mark_sur] Success. Output: {abs_output}")
         return abs_output
     except subprocess.CalledProcessError as e:
